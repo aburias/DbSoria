@@ -9,11 +9,8 @@ namespace DbSoria.Data.Entities
         public Guid AccountId { get; set; }
         [ForeignKey("AccountId")]
         public Account Account { get; set; }
-        [InverseProperty("Staff")]
-        public ICollection<Store> ManagedStores { get; set; }
-        [InverseProperty("Owner")]
+        public ICollection<StoreStaff> ManagedStores { get; set; }
         public ICollection<Store> OwnedStores { get; set; }
-        public ICollection<AccessDetail> AccessDetails { get; set; }
         public ICollection<StoreInvite> StoreInvites { get; set; }
     }
 }
