@@ -6,6 +6,9 @@ namespace DbSoria.Data.Entities
 {
     public class Product : BaseEntity
     {
+        public Guid? ProductCategoryId { get; set; }
+        [ForeignKey("ProductCategoryId")]
+        public ProductCategory ProductCategory { get; set; }
         public Guid StoreId { get; set; }
         [ForeignKey("StoreId")]
         public Store Store { get; set; }

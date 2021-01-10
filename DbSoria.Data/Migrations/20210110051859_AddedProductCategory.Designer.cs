@@ -4,14 +4,16 @@ using DbSoria.Data.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DbSoria.Data.Migrations
 {
     [DbContext(typeof(DbSoriaContext))]
-    partial class DbSoriaContextModelSnapshot : ModelSnapshot
+    [Migration("20210110051859_AddedProductCategory")]
+    partial class AddedProductCategory
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -518,23 +520,14 @@ namespace DbSoria.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("BannerId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<Guid>("CreatedById")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedDateTimeUtc")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid?>("ParentCategoryId")
                         .HasColumnType("uniqueidentifier");
@@ -543,8 +536,6 @@ namespace DbSoria.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("BannerId");
 
                     b.HasIndex("CreatedById");
 
@@ -1368,10 +1359,6 @@ namespace DbSoria.Data.Migrations
 
             modelBuilder.Entity("DbSoria.Data.Entities.ProductCategory", b =>
                 {
-                    b.HasOne("DbSoria.Data.Entities.File", "Banner")
-                        .WithMany()
-                        .HasForeignKey("BannerId");
-
                     b.HasOne("DbSoria.Data.Entities.Account", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById")
@@ -1381,8 +1368,6 @@ namespace DbSoria.Data.Migrations
                     b.HasOne("DbSoria.Data.Entities.ProductCategory", "ParentCategory")
                         .WithMany("SubCategories")
                         .HasForeignKey("ParentCategoryId");
-
-                    b.Navigation("Banner");
 
                     b.Navigation("CreatedBy");
 

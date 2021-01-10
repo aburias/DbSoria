@@ -24,6 +24,7 @@ namespace DbSoria.Data.DbContexts
             base.OnConfiguring(optionsBuilder);
         }
 
+        public DbSet<ProductCategory> ProductCategories { get; set; }
         public DbSet<AccessPermision> AccessPermisions { get; set; }
         public DbSet<Account> Accounts { get; set; }
         public DbSet<AccountAddress> AccountAddresses { get; set; }
