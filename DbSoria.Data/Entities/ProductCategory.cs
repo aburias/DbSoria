@@ -17,5 +17,6 @@ namespace DbSoria.Data.Entities
         public Guid? BannerId { get; set; }
         [ForeignKey("BannerId")]
         public File Banner { get; set; }
+        public bool IsFeatured { get; set; }
     }
 }
