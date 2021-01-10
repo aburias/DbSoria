@@ -8,7 +8,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DbSoria.Data.DbContexts;
 using DbSoria.Helpers;
+using Microsoft.EntityFrameworkCore;
 
 namespace DbSoria.Web
 {
@@ -26,6 +28,12 @@ namespace DbSoria.Web
         {
             services.AddRazorPages().AddRazorPagesOptions(options =>
             {
+            });
+
+            var env = Configuration["Env"];
+            services.AddDbContext<DbSoriaContext>(options =>
+            {
+                options.UseSqlServer(Configuration[$"ConnectionStrings:{env}"]);
             });
 
             services.AddScoped<IContextHelpers, ContextHelpers>();
