@@ -17,6 +17,8 @@ namespace DbSoria.Web.Pages
         private readonly IContextHelpers _contextHelpers;
         private readonly IConfiguration _config;
 
+        public string SubDomain { get; set; }
+
         public IndexModel(ILogger<IndexModel> logger, IContextHelpers contextHelpers, IConfiguration config)
         {
             _logger = logger;
@@ -26,9 +28,10 @@ namespace DbSoria.Web.Pages
 
         public IActionResult OnGet()
         {
+            // Use this later...
             var subdomain = _contextHelpers.GetSubDomain(HttpContext, _config);
 
-            return Content(subdomain);
+            return !string.IsNullOrEmpty(subdomain) ? (IActionResult) RedirectToPage("Index", new {area = "Store"}) : Page();
         }
     }
 }

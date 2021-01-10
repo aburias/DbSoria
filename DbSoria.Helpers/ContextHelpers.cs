@@ -21,7 +21,7 @@ namespace DbSoria.Helpers
 
             var storeDomain = subDomain?.Trim()?.ToLower();
 
-            return storeDomain == domain ? string.Empty : storeDomain;
+            return storeDomain == domain || storeDomain == "localhost" ? string.Empty : storeDomain;
         }
     }
 }
