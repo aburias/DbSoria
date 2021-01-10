@@ -12,11 +12,12 @@ namespace DbSoria.Data.Entities
         public string Name { get; set; }
         public double? Price { get; set; }
         public double? DiscountedPrice { get; set; }
-        [InverseProperty("Product")]
         public ICollection<ProductImage> Images { get; set; }
         public Guid TemplateId { get; set; }
         [ForeignKey("TemplateId")]
         public Template Template { get; set; }
         public ICollection<ProductSection> Sections { get; set; }
+        public ICollection<ProductVariationGroup> VariationGroups { get; set; }
+        public ICollection<ProductVariationPrice> VariationPrices { get; set; }
     }
 }

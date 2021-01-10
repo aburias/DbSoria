@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DbSoria.Data.Entities
 {
-    public class SectionType : BaseEntity
+    public class ProductSectionType : BaseEntity
     {
         public string Name { get; set; }
         public string Description { get; set; }

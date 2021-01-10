@@ -14,7 +14,7 @@ namespace DbSoria.Data.Entities
         public Template Template { get; set; }
         public Guid SectionTypeId { get; set; }
         [ForeignKey("SectionTypeId")]
-        public SectionType SectionType { get; set; }
+        public ProductSectionType SectionType { get; set; }
         //public SectionType SectionType { get; set; }
     }
 
