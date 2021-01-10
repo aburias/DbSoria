@@ -1,10 +1,11 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
 
 namespace DbSoria.Helpers
 {
     public class ContextHelpers : IContextHelpers
     {
-        public string GetSubDomain(HttpContext httpContext)
+        public string GetSubDomain(HttpContext httpContext, IConfiguration config)
         {
             var subDomain = string.Empty;
 
@@ -15,7 +16,12 @@ namespace DbSoria.Helpers
                 subDomain = host.Split('.')[0];
             }
 
-            return subDomain.Trim().ToLower();
+            var env = config["Env"];
+            var domain = config[$"SiteConfig:Domain:{env}"]?.Trim()?.ToLower();
+
+            var storeDomain = subDomain?.Trim()?.ToLower();
+
+            return storeDomain == domain ? string.Empty : storeDomain;
         }
     }
 }

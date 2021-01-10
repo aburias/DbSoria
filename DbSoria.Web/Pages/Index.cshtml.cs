@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using DbSoria.Helpers;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
 
 namespace DbSoria.Web.Pages
 {
@@ -14,16 +15,19 @@ namespace DbSoria.Web.Pages
     {
         private readonly ILogger<IndexModel> _logger;
         private readonly IContextHelpers _contextHelpers;
+        private readonly IConfiguration _config;
 
-        public IndexModel(ILogger<IndexModel> logger, IContextHelpers contextHelpers)
+        public IndexModel(ILogger<IndexModel> logger, IContextHelpers contextHelpers, IConfiguration config)
         {
             _logger = logger;
             _contextHelpers = contextHelpers;
+            _config = config;
         }
 
         public IActionResult OnGet()
         {
-            var subdomain = _contextHelpers.GetSubDomain(HttpContext);
+            var subdomain = _contextHelpers.GetSubDomain(HttpContext, _config);
+
             return Content(subdomain);
         }
     }
