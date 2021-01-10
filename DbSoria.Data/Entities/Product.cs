@@ -10,6 +10,9 @@ namespace DbSoria.Data.Entities
         [ForeignKey("StoreId")]
         public Store Store { get; set; }
         public string Name { get; set; }
+        public bool IsAddOn { get; set; }
+        public int Stocks { get; set; }
+        public string ProductCode { get; set; }
         public double? Price { get; set; }
         public double? DiscountedPrice { get; set; }
         public ICollection<ProductImage> Images { get; set; }
@@ -19,5 +22,7 @@ namespace DbSoria.Data.Entities
         public ICollection<ProductSection> Sections { get; set; }
         public ICollection<ProductVariationGroup> VariationGroups { get; set; }
         public ICollection<ProductVariationPrice> VariationPrices { get; set; }
+        [InverseProperty("AddOnProduct")]
+        public ICollection<ProductAddOn> ProductAddOns { get; set; }
     }
 }
