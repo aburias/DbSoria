@@ -10,6 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using DbSoria.Data.DbContexts;
 using DbSoria.Helpers;
+using DbSoria.Web.Filters;
 using Microsoft.EntityFrameworkCore;
 
 namespace DbSoria.Web
@@ -26,7 +27,12 @@ namespace DbSoria.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddRazorPages().AddRazorPagesOptions(options =>
+            services.AddRazorPages()
+                .AddMvcOptions(options =>
+                {
+                    options.Filters.Add(new SubDomainAsyncPageFilter(Configuration));
+                })
+                .AddRazorPagesOptions(options =>
             {
             });
 
