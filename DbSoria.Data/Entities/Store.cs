@@ -9,6 +9,7 @@ namespace DbSoria.Data.Entities
     public class Store : BaseEntity
     {
         public string Name { get; set; }
+        public string Currency { get; set; }
         public string SubDomain => Name.ToSubDomain();
         public Guid OwnerId { get; set; }
         [ForeignKey("OwnerId")]
@@ -16,5 +17,7 @@ namespace DbSoria.Data.Entities
         public ICollection<StoreStaff> Staff { get; set; }
         public ICollection<StoreInvite> StoreInvites { get; set; }
         public ICollection<Product> Products { get; set; }
+        public ICollection<Order> Orders { get; set; }
+        public ICollection<StoreMarketing> StoreMarketings { get; set; }
     }
 }

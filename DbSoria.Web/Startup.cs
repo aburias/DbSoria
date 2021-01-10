@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DbSoria.Helpers;
 
 namespace DbSoria.Web
 {
@@ -24,6 +25,8 @@ namespace DbSoria.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+
+            services.AddScoped<IContextHelpers, ContextHelpers>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
