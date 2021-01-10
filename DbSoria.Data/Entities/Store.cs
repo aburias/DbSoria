@@ -19,5 +19,6 @@ namespace DbSoria.Data.Entities
         public ICollection<Product> Products { get; set; }
         public ICollection<Order> Orders { get; set; }
         public ICollection<StoreMarketing> StoreMarketings { get; set; }
+        public ICollection<Buyer> Customers { get; set; }
     }
 }
