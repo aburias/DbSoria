@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 
 namespace DbSoria.Web.Filters
 {
@@ -36,21 +37,11 @@ namespace DbSoria.Web.Filters
 
             var storeDomain = subDomain?.Trim()?.ToLower();
 
-            //if (storeDomain == "admin")
-            //{
+            //if (storeDomain == "admin" && isRootPath)
             //    context.Result = new RedirectToPageResult("Index", new {area = "Admin"});
-            //}
+            //else if (storeDomain != domain && storeDomain != "localhost" && isRootPath)
+            //    context.Result = new RedirectToPageResult("Index", new {area = "Store"});
             //else
-            //    await next.Invoke();
-
-            //httpContext.Items.Add(new KeyValuePair<object, object>("storeDomain", storeDomain));
-
-            //if (httpContext.User.Identity.IsAuthenticated)
-            //{
-
-            //}
-
-            //context.Result = storeDomain == domain || storeDomain == "localhost" ? Page() : storeDomain;
 
             await next.Invoke();
         }

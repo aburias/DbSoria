@@ -13,6 +13,7 @@ namespace DbSoria.Data.Entities
         [ForeignKey("StoreId")]
         public Store Store { get; set; }
         public string Name { get; set; }
+        public string SeoName => Name.ToLower().Replace(" ", "-");
         public bool IsAddOn { get; set; }
         public int Stocks { get; set; }
         public string ProductCode { get; set; }

@@ -32,10 +32,12 @@ namespace DbSoria.Web.Pages
             var subdomain = HttpContext.Items["storeDomain"]?.ToString();
             //var subdomain = _contextHelpers.GetSubDomain(HttpContext, _config);
 
-            if (!string.IsNullOrEmpty(subdomain) && subdomain == "admin")
-                return RedirectToPage("Index", new {area = "Admin"});
+            //if (!string.IsNullOrEmpty(subdomain) && subdomain == "admin")
+            //    return RedirectToPage("Index", new {area = "Admin"});
 
-            return !string.IsNullOrEmpty(subdomain) ? (IActionResult) RedirectToPage("Index", new {area = "Store"}) : Page();
+            //return !string.IsNullOrEmpty(subdomain) ? (IActionResult) RedirectToPage("Index", new {area = "Store"}) : Page();
+
+            return Page();
         }
     }
 }
